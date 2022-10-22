@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/palomosdepapel/RegalosyFlores-JuanCarlosHuertasDonato.git"
+    "url": "git+https://github.com/palomosdepapel/JavascriptCoderhouse.git"
   },
   "author": "juan_carlos_huertas",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/palomosdepapel/RegalosyFlores-JuanCarlosHuertasDonato/issues"
+    "url": "https://github.com/palomosdepapel/JavascriptCoderhouse/issues"
   },
-  "homepage": "https://github.com/palomosdepapel/RegalosyFlores-JuanCarlosHuertasDonato#readme"
+  "homepage": "https://github.com/palomosdepapel/JavascriptCoderhouse#readme"
 }
