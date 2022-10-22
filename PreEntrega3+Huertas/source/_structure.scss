@@ -1,0 +1,593 @@
+/*GENERAL*/
+body {
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  line-height: 1;
+  font-size: 14px;
+  background-color: $greylight;
+}
+
+//>>>>>>>>>>>>>>>>>>>>> EACH o listas <<<<<<<<<<<
+@each $lista in header,
+main,
+footer {
+  .#{$lista} {
+    display: block;
+  }
+}
+
+main ul li,
+main ol li,
+footer ul li,
+footer ol li {
+  padding-bottom: 12px;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.contenido {
+  margin: 0 auto;
+  width: 90%;
+  max-width: 1280px;
+}
+
+.ocultar {
+  display: none;
+}
+
+.contenedor-redondo,
+.contenedor-carrito,
+.contenedor-legales {
+  border-radius: 15px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+//>>>>>>>>>>>>>>>>>>>>> MAPS with each <<<<<<<<<<<
+$mapa:(redondo: $greylight,
+  carrito: $white,
+  legales: $white,
+);
+
+@each $nombres,
+$colores in $mapa {
+  .contenedor-#{$nombres} {
+    background-color: $colores;
+  }
+}
+
+.buscador {
+  padding: 10px 20px 10px 0px;
+  display: inline-block;
+
+  input.text {
+    padding: 5px 50px 5px 10px;
+    border-radius: 15px;
+    border: 1px solid $white;
+    height: 33px;
+    width: -webkit-fill-available;
+  }
+
+  input.text:focus {
+    outline: 1px solid $greylight;
+    border: 1px solid $greylight;
+  }
+
+  input.number {
+    padding: 5px 60px 5px 10px;
+    border-radius: 15px;
+    border: 1px solid $white;
+    height: 32px;
+    width: 110px;
+  }
+
+  input.number:focus {
+    outline: 1px solid $greylight;
+    border: 1px solid $greylight;
+  }
+
+  //>>>>>>>>>>>>>>>>>>>>> EXTEND : comparte fragmenots idénticos <<<<<<<<<<<
+  .button {
+    cursor: pointer;
+    background-color: $quaternary;
+    color: $quaternary;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    border-radius: 10px 20px 20px 0px;
+    height: 31px;
+    width: 40px;
+    position: absolute;
+    right: 21px;
+    margin-top: 1px;
+  }
+
+  .button-zoom {
+    @extend .button;
+    background-image: url(../img/zoom.png);
+  }
+
+  .button-cart {
+    @extend .button;
+    background-image: url(../img/cart.png);
+  }
+
+  .button:hover {
+    background-color: $primary;
+  }
+}
+
+/****************botones******************/
+.btn-primary {
+  background-color: $primary;
+  color: $white;
+  border: 1px solid $primary;
+  text-align: center;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  transform-origin: center;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.btn-outline-primary {
+  border: 1px solid $primary;
+  text-align: center;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  color: $darkgrey;
+}
+
+.btn-check:active+.btn,
+.btn-check:checked+.btn,
+.btn.active,
+.btn.show,
+.btn:active {
+  background-color: $primary;
+  border: 1px solid $primary;
+  color: $white;
+}
+
+.btn:hover,
+.btn-primary:hover,
+.btn-outline-primar:hover {
+  background-color: $quaternary;
+  border: 1px solid $quaternary;
+}
+
+.btn-check:focus+.btn,
+.btn:focus {
+  background-color: $quaternary;
+  border: 1px solid $quaternary;
+  box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.2) !important;
+}
+
+.btn-check:active+.btn:focus,
+.btn-check:checked+.btn:focus,
+.btn.active:focus,
+.btn.show:focus,
+.btn:active:focus {
+  box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.2) !important;
+}
+
+.only-desktop-block {
+  display: block !important;
+}
+
+.only-desktop {
+  display: inline-block !important;
+
+  i {
+    color: var($grey);
+  }
+
+  i:hover {
+    color: var($darkgrey);
+  }
+}
+
+.only-mobile-flex {
+  display: none !important;
+}
+
+/****************header & nav******************/
+
+body.bg-dark {
+  header {
+    .menuSuperior {
+      background-color: rgba(249, 189, 3, 0);
+    }
+
+    a {
+      color: $white;
+    }
+  }
+}
+
+header {
+  .menuSuperior {
+    background-color: $greylight;
+  }
+
+  a {
+    display: inline-block;
+    padding: 5px;
+    font-size: 20px;
+    color: $darkgrey;
+  }
+
+  .navbar-brand {
+    margin-left: 20px;
+    content: url("../img/logo.png");
+    width: 80px;
+  }
+
+  .dropdown-menu {
+    border: 1px solid transparent;
+  }
+
+  .dropdown-item.active,
+  .dropdown-item:active,
+  .dropdown-item:focus,
+  .dropdown-item:hover {
+    background-color: $greylight !important;
+  }
+
+  .flex-var {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  nav {
+    display: inline-block;
+    z-index: 500;
+
+    ul {
+      li {
+        padding: 10px;
+
+        span {
+          color: $white;
+        }
+      }
+
+      li:last-child {
+        border-bottom: 1px solid transparent;
+      }
+
+      a {
+        font-size: 14px !important;
+      }
+    }
+  }
+
+  .badge.text-bg-secondary {
+    position: absolute;
+    right: -20px;
+  }
+}
+
+/****************gradients******************/
+
+.bg-dark {
+  background-image: linear-gradient(30deg,
+      rgba(245, 51, 62, 1),
+      rgba(251, 28, 117, 1)) !important;
+}
+
+.bg-light {
+  background: rgb(245, 234, 238);
+  background: linear-gradient(0deg,
+      rgba(245, 234, 238, 1) 0%,
+      rgba(255, 255, 255, 1) 50%,
+      rgba(255, 255, 255, 1) 100%);
+}
+
+/****************main******************/
+main {
+
+  .destacados,
+  .producto,
+  .contacto {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .destacados {
+
+    .primero {
+      background-color: $pinklight;
+      padding: 50px 80px;
+      border-radius: 20px;
+    }
+
+    .segundo {
+      background-color: $peachlight;
+      padding: 50px 80px;
+      border-radius: 20px;
+    }
+
+    .slider {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+  }
+
+  .producto {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  a.nav-link {
+    color: $grey;
+    font-weight: 600;
+  }
+
+  a.nav-link.active {
+    color: $darkgrey;
+    border-bottom: 3px solid $primary;
+  }
+
+  .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+    color: $darkgrey;
+    background-color: transparent;
+    border-radius: 0px;
+  }
+
+  .nav-link:focus,
+  .nav-link:hover {
+    color: $black;
+  }
+
+  //>>>>>>>>>>>>>>>>>>>>> BUCLES o for (para) <<<<<<<<<<<
+  @for $colflex from 3 through 7 {
+
+    //fragmento que se repite
+    .columna-flex-#{$colflex}0 {
+      width: (10% * $colflex);
+    }
+  }
+
+  h2 {
+    color: $darkgrey;
+  }
+
+  h4 {
+    color: $darkgrey;
+    text-align: center;
+  }
+
+  p.destacado {
+    font-size: 19px;
+    padding-bottom: 20px;
+    font-weight: 400;
+  }
+
+  p.precio {
+    font-size: 17px;
+    padding-bottom: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .categorias {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 30px 0px 10px 0px;
+  }
+
+  .grillaProductos {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 30px 0px 10px 0px;
+  }
+
+  .flex-grillaCarrito {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+  }
+
+  .columna-flex {
+    width: 98%;
+    text-align: center;
+    margin: 2%;
+    background: $white;
+    border-radius: 20px;
+  }
+
+  .columna-flex-33 {
+    width: 29%;
+    text-align: center;
+    margin: 2%;
+    background: $white;
+    border-radius: 20px;
+  }
+
+  .columna-flex h3,
+  .columna-flex-33 h3 {
+    padding: 20px 15px;
+  }
+
+  .card {
+    border-radius: 20px;
+    border: 1px solid $white;
+    overflow: hidden;
+
+    h3 {
+      text-align: center;
+    }
+
+    .card-img,
+    .card-img-top {
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+    }
+  }
+
+  .favorite:link,
+  .favorite:visited {
+    color: $grey;
+    font-size: 20px;
+    position: absolute;
+    z-index: 5;
+    right: 15px;
+    top: 15px;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background-color 2s ease-out 100ms;
+  }
+
+  main .favorite:hover,
+  main .favorite:focus {
+    background-color: $greylight;
+  }
+
+  .data {
+    display: flex;
+    flex-direction: row;
+    padding: 0px;
+  }
+
+  .button {
+    font-size: 18px;
+    padding: 10px 25px;
+    background-color: $primary;
+    color: $white;
+    border-radius: 15px 0px 15px 0px;
+    border: 1px solid transparent;
+    margin: 0px;
+    display: inline-block;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    transform-origin: center;
+  }
+
+  .button:hover {
+    background-color: $tertiary;
+  }
+
+  .cat {
+    display: inline-block;
+    animation-duration: 2s;
+    animation-iteration-count: 2s;
+    transform-origin: bottom;
+  }
+
+  .addCart {
+    font-size: 25px;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    padding: 10px 25px;
+    background-color: $primary;
+    color: $white;
+    border-radius: 15px 0px 20px 0px;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    transform-origin: bottom;
+  }
+
+  .addCart:hover {
+    background-color: $tertiary;
+    color: $white;
+  }
+
+  .grillaProductos img.product,
+  .producto img.product {
+    border-radius: 20px 20px 0px 0px;
+  }
+
+  .tabla-carrito {
+    img {
+      width: 100px;
+    }
+  }
+
+  .carrito {
+    input[type="number"] {
+      text-align: center;
+    }
+  }
+
+  label.btn {
+    padding: 3rem 3rem;
+  }
+
+  .btn-pago {
+    background: $white;
+    color: $darkgrey;
+    font-weight: 700;
+    padding: 2rem 4rem;
+    border-radius: 1rem;
+  }
+
+  .btn-pago span {
+    font-size: 200%;
+  }
+
+  .btn-pago:hover,.btn-pago:focus {
+    background-image: linear-gradient(30deg,
+        rgba(245, 51, 62, 1),
+        rgba(251, 28, 117, 1)) !important;
+    color: $white;
+  }
+
+  .ok{
+    color: $quaternary;
+  }
+
+  //>>>>>>>>>>>>>>>>>>>>> MIXINS Y OPERACIONES: reutilizar fragmentos que pueden ir cambiando <<<<<<<<<<<
+  @mixin iframebox ($ancho, $altura, $espaciado) {
+    width: $ancho;
+    height: $altura;
+    padding: $espaciado;
+  }
+
+  .cajamap {
+    @include iframebox (100%, 500px, 15px)
+  }
+
+  .cajavideo {
+    @include iframebox (100%, calc($ancho*2.75), 0px)
+  }
+}
+
+/****************footer******************/
+footer {
+  color: $white;
+  padding: 30px 0px;
+  font-size: 13px;
+
+  a:link,
+  a:visited {
+    color: $white;
+  }
+
+  a:hover,
+  a:focus {
+    color: $white;
+    text-decoration: underline;
+  }
+
+  ol,
+  ul {
+    margin-left: -20px;
+  }
+
+  i {
+    font-size: 18px;
+    display: inline-block;
+    color: $white;
+    margin-right: 10px;
+  }
+}

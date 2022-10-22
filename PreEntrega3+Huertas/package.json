@@ -1,0 +1,19 @@
+{
+  "name": "regalosyflores-juancarloshuertasdonato",
+  "version": "1.0.0",
+  "description": "Desafío gitHub",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/palomosdepapel/RegalosyFlores-JuanCarlosHuertasDonato.git"
+  },
+  "author": "juan_carlos_huertas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/palomosdepapel/RegalosyFlores-JuanCarlosHuertasDonato/issues"
+  },
+  "homepage": "https://github.com/palomosdepapel/RegalosyFlores-JuanCarlosHuertasDonato#readme"
+}
