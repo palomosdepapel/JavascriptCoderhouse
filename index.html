@@ -88,19 +88,10 @@
             </li>
           </ul>
           <ul class="navbar-nav mb-2 mb-lg-0 only-desktop">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                <span class="precio">$809,970</span> - 3 productos <i class="bi bi-cart2"></i>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"">
+                <span class="precio"></span>  <span id="badgeCarrito">0</span> <span> producto(s) <i class="bi bi-cart2"></i></span>
               </a>
-              <ul class="dropdown-menu slide-top">
-                <li><a class="dropdown-item" href="producto.html"><img class="product"
-                      src="img/DSC03049ESCOGIDOweb.jpg" width="32" alt="Rosas" /><span
-                      class="badge text-bg-secondary">x</span> Un momento muy especial</a></li>
-                <li class="align-center">Subtotal: $809,970</li>
-                <li><a class="dropdown-item btn btn-outline-primary" href="carrito.html">Ver carrito</a></li>
-                <li><a class="dropdown-item btn btn-primary" href="checkout-01.html">Finalizar compra</a></li>
-              </ul>
             </li>
           </ul>
         </div>
@@ -110,7 +101,114 @@
 
   <!--área principal-->
   <main>
+
+    <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Tu carrito</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <div id="idCarrito">
+          <div class="row">
+            <div class="col-3"></div>
+            <div class="col-3"><small>Nombre</small></div>
+            <div class="col-2"><small>Precio</small></div>
+            <div class="col-2"><small>Cantidad</small></div>
+            <div class="col-1"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
     <div class="container-xxl pt-2">
+      
+      <section class="grillaProductos">
+        <div class="container-xxl">
+          <div class="row align-items-center">
+            <div class="col-md-12 p-3">
+              <h2>Los más vendidos</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="container-xxl">
+          <div class="row align-items-center">
+            <div id="headerProductos">
+              <!--Alerta si no hay productos-->
+            </div>
+            <div class="swiper mySwiper3">
+              <div class="swiper-wrapper" id="productos">
+                <!-- <div class="swiper-slide">
+                  <div class="card">
+                    <a class="favorite" href="#"><i class="bi bi-bookmark"></i></a>
+                    <a href="producto02.html">
+                      <img src="img/0001.jpg" class="card-img-top scale-up-center" alt="Producto" />
+                    </a>
+                    <div class="card-body">
+                      <h3>Desayuno Aniversario</h3>
+                      <div class="data">
+                        <p class="precio">$153,990</p>
+                      </div>
+                      <a class="addCart grow blink-1" href="carrito.html"><i class="bi bi-cart2"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="card">
+                    <a class="favorite" href="#"><i class="bi bi-bookmark"></i></a>
+                    <a href="producto02.html">
+                      <img src="img/0002.jpg" class="card-img-top scale-up-center" alt="Producto" />
+                    </a>
+                    <div class="card-body">
+                      <h3>Un momento muy especial</h3>
+                      <div class="data">
+                        <p class="precio">$269,990</p>
+                      </div>
+                      <a class="addCart grow blink-1" href="carrito.html"><i class="bi bi-cart2"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="card">
+                    <a class="favorite" href="#"><i class="bi bi-bookmark"></i></a>
+                    <a href="producto02.html">
+                      <img src="img/0003.jpg" class="card-img-top scale-up-center" alt="Producto" />
+                    </a>
+                    <div class="card-body">
+                      <h3>Bouquet 12 rosas surtidas</h3>
+                      <div class="data">
+                        <p class="precio">$66,990</p>
+                      </div>
+                      <a class="addCart grow blink-1" href="carrito.html"><i class="bi bi-cart2"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="card">
+                    <a class="favorite" href="#"><i class="bi bi-bookmark"></i></a>
+                    <a href="producto02.html">
+                      <img src="img/0006.jpg" class="card-img-top scale-up-center" alt="Producto" />
+                    </a>
+                    <div class="card-body">
+                      <h3>Bombón y sus amigas</h3>
+                      <div class="data">
+                        <p class="precio">$175,900</p>
+                      </div>
+                      <a class="addCart grow blink-1" href="carrito.html"><i class="bi bi-cart2"></i></a>
+                    </div>
+                  </div>
+                </div> -->
+              </div>
+              <div class="swiper-pagination"></div>
+              <div class="swiper-button-next"></div>
+              <div class="swiper-button-prev"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
       <section class="destacados">
         <h2 class="ocultar">Destacados</h2>
 
@@ -124,7 +222,7 @@
                 <a class="zoom grow btn btn-primary" href="categoria.html">Ver los productos</a>
               </div>
               <div class="columna-flex-30">
-                <a href="producto.html"><img src="img/1555270965_25.png" class="jello-horizontal" width="100%"
+                <a href="producto02.html"><img src="img/1555270965_25.png" class="jello-horizontal" width="100%"
                     alt="Rosas" /></a>
               </div>
             </article>
@@ -138,7 +236,7 @@
                 <a class="zoom grow btn btn-primary" href="categoria.html">Ver los productos</a>
               </div>
               <div class="columna-flex-30">
-                <a href="producto.html"><img src="img/flowers.png" class="jello-horizontal" width="100%"
+                <a href="producto02.html"><img src="img/flowers.png" class="jello-horizontal" width="100%"
                     alt="Rosas" /></a>
               </div>
             </article>
@@ -228,87 +326,7 @@
         </div>
       </section>
 
-      <section class="grillaProductos">
-        <div class="container-xxl">
-          <div class="row align-items-center">
-            <div class="col-md-12 p-3">
-              <h2>Los más vendidos</h2>
-            </div>
-          </div>
-        </div>
-
-        <div class="container-xxl">
-          <div class="row align-items-center">
-            <div class="swiper mySwiper3">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <div class="card">
-                    <a class="favorite" href="#"><i class="bi bi-bookmark"></i></a>
-                    <a href="producto.html">
-                      <img src="./img/072.jpg" class="card-img-top scale-up-center" alt="Producto" />
-                    </a>
-                    <div class="card-body">
-                      <h3>Desayuno Aniversario</h3>
-                      <div class="data">
-                        <p class="precio">$153,990</p>
-                      </div>
-                      <a class="addCart grow blink-1" href="carrito.html">+</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="card">
-                    <a class="favorite" href="#"><i class="bi bi-bookmark"></i></a>
-                    <a href="producto.html">
-                      <img src="./img/DSC03049ESCOGIDOweb.jpg" class="card-img-top scale-up-center" alt="Producto" />
-                    </a>
-                    <div class="card-body">
-                      <h3>Un momento muy especial</h3>
-                      <div class="data">
-                        <p class="precio">$269,990</p>
-                      </div>
-                      <a class="addCart grow blink-1" href="carrito.html">+</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="card">
-                    <a class="favorite" href="#"><i class="bi bi-bookmark"></i></a>
-                    <a href="producto.html">
-                      <img src="./img/DSC03976escogidoweb.jpg" class="card-img-top scale-up-center" alt="Producto" />
-                    </a>
-                    <div class="card-body">
-                      <h3>Bouquet 12 rosas surtidas</h3>
-                      <div class="data">
-                        <p class="precio">$66,990</p>
-                      </div>
-                      <a class="addCart grow blink-1" href="carrito.html">+</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="card">
-                    <a class="favorite" href="#"><i class="bi bi-bookmark"></i></a>
-                    <a href="producto.html">
-                      <img src="./img/DSC03709_sel.jpg" class="card-img-top scale-up-center" alt="Producto" />
-                    </a>
-                    <div class="card-body">
-                      <h3>Bombón y sus amigas</h3>
-                      <div class="data">
-                        <p class="precio">$175,900</p>
-                      </div>
-                      <a class="addCart grow blink-1" href="carrito.html">+</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-pagination"></div>
-              <div class="swiper-button-next"></div>
-              <div class="swiper-button-prev"></div>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
     </div>
   </main>
@@ -352,97 +370,10 @@
   </script>
   <script src="https://code.jquery.com/jquery-2.2.4.min.js"
     integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-  <script>
-    //Este script modifica las clases del header > nav de acuerdo a la resolución de pantalla:
-    jQuery(document).ready(function ($) {
-      var alterClass = function () {
-        var ww = document.body.clientWidth;
-        if (ww < 992) {
-          $("nav").removeClass("navbar-dark bg-dark");
-          $("nav").addClass("navbar-light bg-light");
-        } else if (ww >= 993) {
-          $("nav").removeClass("navbar-light bg-light");
-          $("nav").addClass("navbar-dark bg-dark");
-        }
-      };
-      $(window).resize(function () {
-        alterClass();
-      });
-      alterClass();
-    });
-  </script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-  <!-- Initialize Swiper -->
-  <script>
-    var swiper = new Swiper(".mySwiper", {
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-      pagination: {
-        el: ".swiper-pagination",
-        dynamicBullets: true,
-      },
-    });
-    var swiper2 = new Swiper(".mySwiper2", {
-      slidesPerView: 1,
-      spaceBetween: 10,
-      freeMode: true,
-      loop: true,
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-      breakpoints: {
-        "@0.00": {
-          slidesPerView: 2,
-          spaceBetween: 10,
-        },
-        "@0.75": {
-          slidesPerView: 3,
-          spaceBetween: 20,
-        },
-        "@1.00": {
-          slidesPerView: 4,
-          spaceBetween: 40,
-        },
-        "@1.50": {
-          slidesPerView: 6,
-          spaceBetween: 50,
-        },
-      },
-    });
-    var swiper3 = new Swiper(".mySwiper3", {
-      slidesPerView: 1,
-      spaceBetween: 10,
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-      pagination: {
-        el: ".swiper-pagination",
-        dynamicBullets: true,
-      },
-      breakpoints: {
-        "@0.00": {
-          slidesPerView: 1,
-          spaceBetween: 10,
-        },
-        "@0.75": {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        "@1.00": {
-          slidesPerView: 3,
-          spaceBetween: 40,
-        },
-        "@1.50": {
-          slidesPerView: 3,
-          spaceBetween: 50,
-        },
-      },
-    });
-  </script>
+  <script src="js/clases/Producto.js"></script>
+  <script src="js/clases/GestionarProductos.js"></script>
+  <script src="js/main.js"></script>
 </body>
 
 </html>
