@@ -166,7 +166,7 @@ class GestionarProductos{
     // mostrar mensaje si no hay nada para mostrar
     if(productos.length === 0){
       // mensaje en el div headerProductos cuando no ha encontrado productos
-        this.mostrarHeader("No se han encontrado productos")
+        this.mostrarHeader("No se han encontrado productos");
     } else{
       // for each para cada elemento (producto) encontrado en esta colección (productos) se crean cajas con lo requerido... 
       productos.forEach(producto => {
@@ -219,8 +219,8 @@ class GestionarProductos{
     this.actualizarContador();
     // plasma el cambio
     this.mostrarCarrito();
-    // guarda el estado del carrito - siempre en local storage
-    //this.guardarCarrito();
+    // guarda el estado del carrito en local storage así se refresque la página
+    this.guardarCarrito();
   } 
 
   actualizarContador(){
@@ -262,7 +262,7 @@ class GestionarProductos{
                             <img src="${producto.img}" width="80"/>
                         </div>
 
-                        <div class="col-3 d-flex align-items-center p-2 border-bottom">
+                        <div class="col-4 d-flex align-items-center p-2 border-bottom">
                             ${producto.nombre}
                         </div>
 
@@ -274,9 +274,9 @@ class GestionarProductos{
                             ${producto.cantidad}
                         </div>
 
-                        <div class="col-2 d-flex align-items-center justify-content-center p-2 border-bottom">
+                        <div class="col-1 d-flex align-items-center justify-content-center p-2 border-bottom">
                             <a href="javascript:eliminar(${producto.id})">
-                                <i class="fa-solid fa-square-minus fa-2x"></i>
+                              <i class="bi bi-dash-square"></i>
                             </a>
                         </div>
       `;
