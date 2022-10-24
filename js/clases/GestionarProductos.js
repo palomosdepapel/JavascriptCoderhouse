@@ -12,7 +12,7 @@ class GestionarProductos{
         "stock": 50,
         "img": "img/0001.jpg",
         "destacado": 1,
-        "categoria": 1,
+        "categoria": "Cajas sorpresas",
         "link": "producto02.html",
         "favorito": 1
       },
@@ -24,7 +24,7 @@ class GestionarProductos{
         "stock": 50,
         "img": "img/0002.jpg",
         "destacado": 1,
-        "categoria": 1,
+        "categoria": "Anchetas",
         "link": "producto02.html",
         "favorito": 0
       },
@@ -36,7 +36,7 @@ class GestionarProductos{
         "stock": 50,
         "img": "img/0003.jpg",
         "destacado": 1,
-        "categoria": 1,
+        "categoria": "Flores",
         "link": "producto02.html",
         "favorito": 0
       },
@@ -48,7 +48,7 @@ class GestionarProductos{
         "stock": 50,
         "img": "img/0004.jpg",
         "destacado": 0,
-        "categoria": 1,
+        "categoria": "Ramilletes",
         "link": "producto02.html",
         "favorito": 0
       },
@@ -60,7 +60,7 @@ class GestionarProductos{
         "stock": 50,
         "img": "img/0005.jpg",
         "destacado": 0,
-        "categoria": 1,
+        "categoria": "Flores",
         "link": "producto02.html",
         "favorito": 0
       },
@@ -72,7 +72,7 @@ class GestionarProductos{
         "stock": 50,
         "img": "img/0006.jpg",
         "destacado": 1,
-        "categoria": 1,
+        "categoria": "Anchetas",
         "link": "producto02.html",
         "favorito": 0
       },
@@ -84,7 +84,7 @@ class GestionarProductos{
         "stock": 50,
         "img": "img/0007.jpg",
         "destacado": 0,
-        "categoria": 1,
+        "categoria": "Cajas sorpresas",
         "link": "producto02.html",
         "favorito": 0
       },
@@ -96,7 +96,7 @@ class GestionarProductos{
         "stock": 50,
         "img": "img/0008.jpg",
         "destacado": 0,
-        "categoria": 1,
+        "categoria": "Flores",
         "link": "producto02.html",
         "favorito": 0
       },
@@ -108,7 +108,7 @@ class GestionarProductos{
         "stock": 50,
         "img": "img/0009.jpg",
         "destacado": 0,
-        "categoria": 1,
+        "categoria": "Cajas sorpresas",
         "link": "producto02.html",
         "favorito": 0
       },
@@ -120,7 +120,7 @@ class GestionarProductos{
         "stock": 50,
         "img": "img/0010.jpg",
         "destacado": 0,
-        "categoria": 1,
+        "categoria": "Anchetas",
         "link": "producto02.html",
         "favorito": 0
       },
@@ -132,7 +132,7 @@ class GestionarProductos{
         "stock": 50,
         "img": "img/0011.jpg",
         "destacado": 0,
-        "categoria": 1,
+        "categoria": "Anchetas",
         "link": "producto02.html",
         "favorito": 0
       },
@@ -144,7 +144,7 @@ class GestionarProductos{
         "stock": 50,
         "img": "img/0012.jpg",
         "destacado": 0,
-        "categoria": 1,
+        "categoria": "Anchetas",
         "link": "producto02.html",
         "favorito": 0
       }
@@ -185,7 +185,7 @@ class GestionarProductos{
                             <div class="card-body">
                               <h3>${producto.nombre}</h3>
                               <div class="data">
-                                <p class="precio">$${producto.precio.toLocaleString('es-CO')}</p>
+                                <p class="precio">$${producto.precio}</p>
                               </div>
                               <a class="addCart grow blink-1" href="javascript:addCarrito(${producto.id})"><i class="bi bi-cart2"></i></a>
                             </div>
@@ -226,8 +226,10 @@ class GestionarProductos{
   actualizarContador(){
     let totalProductos = this.contarProductos();
     // el id a cambiar
-    let countCarrito = document.querySelector("#badgeCarrito");
-    countCarrito.innerHTML=  parseInt(totalProductos) ;
+    let countCarrito1 = document.querySelector("#cuentaProductos1");
+    countCarrito1.innerHTML=  parseInt(totalProductos) ;
+    let countCarrito2 = document.querySelector("#cuentaProductos2");
+    countCarrito2.innerHTML=  parseInt(totalProductos) ;
   }
 
   // conteo productos
@@ -242,6 +244,17 @@ class GestionarProductos{
     return contadorProductos;
   }
 
+  // Se quitan los productos del carrito
+  eliminar(id) { 
+    let resp = confirm("Esta seguro de eliminar el producto ?")
+    if (resp)  {
+        carrito = carrito.filter( producto => producto.id != id);
+        this.actualizarCarrito();
+        alert("El articulo fue eliminado del carrito");
+    }       
+
+}
+
   guardarCarrito(){
     localStorage.setItem('carrito', JSON.stringify( carrito ));
   }
@@ -255,7 +268,7 @@ class GestionarProductos{
     carrito.forEach((producto)=>{
       const row = document.createElement("div");
       row.classList.add("row");
-      total += parseInt(producto.precio.toLocaleString('es-CO'));
+      total += parseInt(producto.precio);
       row.innerHTML = `
                 
                         <div class="col-3 d-flex align-items-center p-2 border-bottom">
@@ -267,7 +280,7 @@ class GestionarProductos{
                         </div>
 
                         <div class="col-3 d-flex align-items-center justify-content-end p-2 border-bottom">
-                            $ ${producto.precio.toLocaleString('es-CO')}
+                            $ ${producto.precio}
                         </div>
 
                         <div class="col-1 d-flex align-items-center justify-content-end p-2 border-bottom">
@@ -290,7 +303,7 @@ class GestionarProductos{
                             Total a pagar:
                         </div>
                         <div class="col-8 d-flex align-items-center justify-content-end p-2 border-bottom">
-                            <b> $ ${total.toLocaleString('es-CO')}</b>
+                            <b> $ ${total}</b>
                         </div>`;
 
     // html en el carrito
