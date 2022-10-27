@@ -54,7 +54,7 @@ class GestionarProductos{
       },
       {
         "id": 5,
-        "nombre": "Un momento muy especial",
+        "nombre": "Arreglo caja de girasoles y chocolates Ferrero",
         "descripcion": "",
         "precio": 98990,
         "stock": 50,
@@ -149,7 +149,7 @@ class GestionarProductos{
         "favorito": 0
       }
     ]
-    // filter para traer sólo los productos destacados "destacado": 1. (genera un nuevo arreglo)
+    // filter para traer sólo los productos destacados (genera un nuevo arreglo)
     let productosDestacados = productos.filter(prod => prod.destacado == 1);
     // manipular en la web con this. Porque va aser una función de esta clase en particular: gestionarProductos
     this.cargaProductos(productosDestacados);
@@ -157,6 +157,8 @@ class GestionarProductos{
     this.mostrarCarrito();
     this.actualizarContador();
   }
+
+
   //método cargar productos. Recibe una colección de productos
   cargaProductos(productos){
     //identifico con DOM el contenedor donde quiero mostra los productos destacados
@@ -167,9 +169,19 @@ class GestionarProductos{
     if(productos.length === 0){
       // mensaje en el div headerProductos cuando no ha encontrado productos
         this.mostrarHeader("No se han encontrado productos");
-    } else{
+        return false;
+    } 
+    else{
       // for each para cada elemento (producto) encontrado en esta colección (productos) se crean cajas con lo requerido... 
-      productos.forEach(producto => {
+      productos.forEach( (producto) => {
+
+        const {  id : id_prod,
+                  nombre : nombre_prod,
+                  precio: precio_prod,
+                  img : img_prod,
+                  cantidad : cant_prod ,
+                  descripcion : descripcion_prod} = producto;
+        
         // crear caja 
         let prod = document.createElement('div');
         // agrega cada caja con una clase específica
@@ -191,27 +203,54 @@ class GestionarProductos{
                             </div>
                           </div>`;
                           // caja dinámica generada por casa elemento encontrado
-                          divProductos.appendChild(prod);
-
-      });
+        divProductos.appendChild(prod);
+      })
     }
   }
 
-  //crea una función genérica para mostrar mensaje (refresca y muestra)
-  mostrarHeader(msj){
-    //detectar el id
-    const headerProductos = document.querySelector("#headerProductos");
-    // a este id con innerHTML es igual al mensaje
-    headerProductos.innerHTML = msj ;
+
+  // Buscar productos
+  buscar(q) { 
+    let resultado = productos.filter( producto => producto.nombre.toLowerCase().includes( q.toLowerCase() ) || producto.descripcion.toLowerCase().includes( q.toLowerCase() ));      
+    this.cargaProductos( resultado );                   
   }
+ 
+
+
   // función que agrega el producto al carrito después de dal clic en agrega el producto (icono carrito de cada producto)
-  addCart(producto){
-    // se agrega a la colección
-    carrito.push(producto);
+  addCart(infoProducto){
+    // true o false
+    const existe = carrito.some( producto => producto.id === infoProducto.id);
+
+   
+    if(existe){
+      const articulos = carrito.map( producto => {
+        // si el producto existe, entonces se aumenta la cantidad del contador (cant 2, cant 3, etx)
+        if(producto.id === infoProducto.id){
+          // aumento cantidad y lo retorno
+          producto.cantidad++;
+          return producto;
+        }
+        // si no lo encuentra, se retorna tal cual 
+        else{
+          return producto;
+        }
+        carrito= articulos;
+      })
+        
+        alert("Se actualizó la cantidad de productos")
+    }
+    else
+    {
+      // como no existe, se agrega (cant 1)
+    carrito.push(infoProducto);
     alert("se agregó el producto exitosamente");
-    // se actualiza el carrito
-    this.actualizarCarrito();
+    }
+  // se actualiza el carrito
+  this.actualizarCarrito();
   }
+
+
 
   // se actualiza el carrito cada vez que se agrega un producto
   actualizarCarrito(){
@@ -223,6 +262,8 @@ class GestionarProductos{
     this.guardarCarrito();
   } 
 
+
+
   actualizarContador(){
     let totalProductos = this.contarProductos();
     // el id a cambiar
@@ -231,6 +272,8 @@ class GestionarProductos{
     let countCarrito2 = document.querySelector("#cuentaProductos2");
     countCarrito2.innerHTML=  parseInt(totalProductos) ;
   }
+
+
 
   // conteo productos
   contarProductos(){
@@ -244,20 +287,34 @@ class GestionarProductos{
     return contadorProductos;
   }
 
+
+
   // Se quitan los productos del carrito
-  eliminar(id) { 
-    let resp = confirm("Esta seguro de eliminar el producto ?")
+  eliminarArticulo(id) { 
+    let resp = confirm("Esta seguro de eliminar el producto ?");
     if (resp)  {
+
         carrito = carrito.filter( producto => producto.id != id);
         this.actualizarCarrito();
         alert("El articulo fue eliminado del carrito");
     }       
+  }
 
-}
 
+  // se guarda el contenido del carrito en local storage
   guardarCarrito(){
     localStorage.setItem('carrito', JSON.stringify( carrito ));
   }
+
+
+ //crea una función genérica para mostrar mensaje (refresca y muestra)
+  mostrarHeader(msj){
+    //detectar el id
+    const headerProductos = document.querySelector("#headerProductos");
+    // a este id con innerHTML es igual al mensaje
+    headerProductos.innerHTML = msj ;
+  }
+
 
   //mostrar carrito
   mostrarCarrito(){

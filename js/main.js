@@ -101,6 +101,7 @@ document.addEventListener('DOMContentLoaded',() => {
   //busco clave carrito y devuelvo toda la información que tenga
   // a la variable carrito le asigno lo que recupero de local storage (convertido por parseo)
   // Un OR para que valide si el estado local storage no existe, entonces quede vacío el arreglo 
+  // OPERADOR AVANZADO
   carrito = JSON.parse(localStorage.getItem('carrito')) || [];
   // inicializar gestor para darle vida a la clase gestor
   gestor = new GestionarProductos();
@@ -111,7 +112,7 @@ document.addEventListener('DOMContentLoaded',() => {
 // Crear nueva función agregar productos al carrito que recibe un ID
 function addCarrito(id){
   // concateno el id con la caja dinámica id row
-  let prod = document.querySelector('#row_'+id);
+  const prod = document.querySelector('#row_'+id);
   // nuevo producto para agregar a la colección de mi carrito (offcanvas de bootstrap)
   let producto = new Producto ( id,
                                 prod.querySelector("h3").textContent,
@@ -122,3 +123,25 @@ function addCarrito(id){
 gestor.addCart(producto)
 
 }
+
+// Crear nueva función eliminar producto al carrito que recibe un ID
+function eliminar(id){
+// pasamos el producto que queremos eliminar
+  gestor.eliminarArticulo(id);
+
+}
+
+// Eventos de tecla para buscador
+document.querySelector('#buscar').addEventListener('keyup', () => {
+  let q = document.querySelector('#buscar').value;
+  //Empezamos a buscar solo cuadno hay se hayan tipeado mas 2 letras o mas
+  if( q.length >= 2 ) { 
+      gestor.mostrarHeader(`Resultados para: ${q}`);
+      gestor.buscar( q );        
+  } else if ( q.length === 0 ) {
+      //Muestro todo sino hay nada el buscador   
+      gestor.mostrarHeader('Todos los productos en stock');
+      gestor.cargaProductos( productos );
+  } 
+
+})
