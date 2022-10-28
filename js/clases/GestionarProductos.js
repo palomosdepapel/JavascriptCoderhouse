@@ -152,7 +152,8 @@ class GestionarProductos{
     // filter para traer sólo los productos destacados (genera un nuevo arreglo)
     let productosDestacados = productos.filter(prod => prod.destacado == 1);
     // manipular en la web con this. Porque va aser una función de esta clase en particular: gestionarProductos
-    this.cargaProductos(productosDestacados);
+    //this.cargaProductos(productosDestacados);
+    this.cargaProductos(productos);
     //llamar funciones
     this.mostrarCarrito();
     this.actualizarContador();
