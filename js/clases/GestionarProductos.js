@@ -386,7 +386,7 @@ class GestionarProductos {
 
                         <div class="col-1 d-flex align-items-center justify-content-center p-2 border-bottom">
                             <a href="javascript:eliminar(${producto.id})">
-                              <i class="bi bi-dash-square"></i>
+                              <i class="bi bi-x-square"></i>
                             </a>
                         </div>
 
