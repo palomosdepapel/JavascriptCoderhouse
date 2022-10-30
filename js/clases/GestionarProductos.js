@@ -306,7 +306,7 @@ class GestionarProductos {
     // una vez que recorre, devuelve la estru
     return contadorProductos;
   }
-
+  
 
 
   // Se quitan los productos del carrito
@@ -365,7 +365,7 @@ class GestionarProductos {
     carrito.forEach((producto) => {
       const row = document.createElement("div");
       row.classList.add("row");
-      total += parseInt(producto.precio);
+      total = total + (producto.precio * parseInt(producto.cantidad));
       row.innerHTML = `
                 
                         <div class="col-3 d-flex align-items-center p-2 border-bottom">
@@ -389,22 +389,28 @@ class GestionarProductos {
                               <i class="bi bi-dash-square"></i>
                             </a>
                         </div>
-      `;
+
+                      `;
       detalleCarrito.appendChild(row);
     })
-
+    
     let row = document.createElement('div');
     row.classList.add('row');
 
-    row.innerHTML = `   <div class="col-4 d-flex align-items-center justify-content-start p-2 border-bottom">
-                            Total a pagar:
-                        </div>
-                        <div class="col-8 d-flex align-items-center justify-content-end p-2 border-bottom">
-                            <b> $ ${total}</b>
-                        </div>`;
+    row.innerHTML = `
+    
+                      <div class="col-4 d-flex align-items-center justify-content-start p-2 border-bottom">
+                          Total a pagar:
+                      </div>
+                      <div class="col-8 d-flex align-items-center justify-content-end p-2 border-bottom">
+                          <b> $ ${total}</b>
+                      </div>
+
+                    `;
 
     // html en el carrito
     detalleCarrito.appendChild(row);
+    
   }
 
   mostrar_notificacion(texto, duracion, gravedad, posicion, estilo) {
@@ -422,4 +428,5 @@ class GestionarProductos {
 
 
   }
-}
+  
+} 
