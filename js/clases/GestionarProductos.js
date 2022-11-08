@@ -3,7 +3,7 @@ class GestionarProductos {
   // método iniciar
   iniciar() {
     //hacemos fetch a la url (ruta en main.js)
-    fetch(url)
+    fetch(urljson)
     .then(respuesta => respuesta.json())
     .then(resultado => {
       productos = resultado.productos;
@@ -13,7 +13,8 @@ class GestionarProductos {
       //this.cargaProductos(productosDestacados);
       this.cargaProductos(productosDestacados);
       
-    })
+      
+    });
     //llamar funciones
     this.mostrarCarrito();
     this.actualizarContador();

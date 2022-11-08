@@ -1,6 +1,6 @@
 // prueba json local
 const listado  = document.getElementById("listado");
-const listadoProductos = "productos.json";
+const listadoProductos = "https://palomosdepapel.github.io/JavascriptCoderhouse/json/productos.json";
 
 fetch(listadoProductos)
   .then(respuesta => respuesta.json())
