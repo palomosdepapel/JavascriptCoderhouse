@@ -25,6 +25,9 @@ let gestor=[];
 // clave carrito
 const clave_carrito = "carrito";
 
+//ruta de los datos en formato json
+const url = './json/productos.json';
+
 // Detectar el evento de carga: cuando DOM esté listo y el contenido esté cargado... ejecuto este bloque de código.
 document.addEventListener('DOMContentLoaded',() => {
   //busco clave carrito y devuelvo toda la información que tenga

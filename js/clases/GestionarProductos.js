@@ -2,163 +2,26 @@
 class GestionarProductos {
   // método iniciar
   iniciar() {
-    // lo productos que quiero cargar son... el contenido es este...
-    productos = [
-      {
-        "id": 1,
-        "nombre": "Desayuno Aniversario",
-        "descripcion": "",
-        "precio": 153990,
-        "stock": 50,
-        "img": "img/0001.jpg",
-        "destacado": 1,
-        "categoria": "Cajas sorpresas",
-        "link": "producto02.html",
-        "favorito": 1
-      },
-      {
-        "id": 2,
-        "nombre": "Un momento muy especial",
-        "descripcion": "Llevamos hasta tu casa o lugar de trabajo todos los detalles con los que deseas expresar tus sentimientos.",
-        "precio": 269990,
-        "stock": 50,
-        "img": "img/0002.jpg",
-        "destacado": 1,
-        "categoria": "Anchetas",
-        "link": "producto02.html",
-        "favorito": 0
-      },
-      {
-        "id": 3,
-        "nombre": "Bouquet 12 rosas surtidas",
-        "descripcion": "",
-        "precio": 66900,
-        "stock": 50,
-        "img": "img/0003.jpg",
-        "destacado": 1,
-        "categoria": "Flores",
-        "link": "producto02.html",
-        "favorito": 0
-      },
-      {
-        "id": 4,
-        "nombre": "Chocolates en ramillete",
-        "descripcion": "",
-        "precio": 64990,
-        "stock": 50,
-        "img": "img/0004.jpg",
-        "destacado": 0,
-        "categoria": "Ramilletes",
-        "link": "producto02.html",
-        "favorito": 0
-      },
-      {
-        "id": 5,
-        "nombre": "Arreglo caja de girasoles y chocolates Ferrero",
-        "descripcion": "",
-        "precio": 98990,
-        "stock": 50,
-        "img": "img/0005.jpg",
-        "destacado": 0,
-        "categoria": "Flores",
-        "link": "producto02.html",
-        "favorito": 0
-      },
-      {
-        "id": 6,
-        "nombre": "Bombón y sus amigas",
-        "descripcion": "",
-        "precio": 175900,
-        "stock": 50,
-        "img": "img/0006.jpg",
-        "destacado": 1,
-        "categoria": "Anchetas",
-        "link": "producto02.html",
-        "favorito": 0
-      },
-      {
-        "id": 7,
-        "nombre": "Desayuno Un detalle solo para ti (caja decorada)",
-        "descripcion": "",
-        "precio": 85990,
-        "stock": 50,
-        "img": "img/0007.jpg",
-        "destacado": 0,
-        "categoria": "Cajas sorpresas",
-        "link": "producto02.html",
-        "favorito": 0
-      },
-      {
-        "id": 8,
-        "nombre": "Caja de rosas",
-        "descripcion": "",
-        "precio": 69990,
-        "stock": 50,
-        "img": "img/0008.jpg",
-        "destacado": 0,
-        "categoria": "Flores",
-        "link": "producto02.html",
-        "favorito": 0
-      },
-      {
-        "id": 9,
-        "nombre": "Cerveza alemana y chocolates (con bombas)",
-        "descripcion": "",
-        "precio": 81990,
-        "stock": 50,
-        "img": "img/0009.jpg",
-        "destacado": 0,
-        "categoria": "Cajas sorpresas",
-        "link": "producto02.html",
-        "favorito": 0
-      },
-      {
-        "id": 10,
-        "nombre": "Arreglo de 3 girasoles, peluditos, Baileys y chocolatina Lindt",
-        "descripcion": "",
-        "precio": 199990,
-        "stock": 50,
-        "img": "img/0010.jpg",
-        "destacado": 0,
-        "categoria": "Anchetas",
-        "link": "producto02.html",
-        "favorito": 0
-      },
-      {
-        "id": 11,
-        "nombre": "Flores con naranjas y globo burbuja",
-        "descripcion": "Variedad de flores con naranjas y globo burbuja en caja coleccionable",
-        "precio": 89990,
-        "stock": 50,
-        "img": "img/0011.jpg",
-        "destacado": 0,
-        "categoria": "Anchetas",
-        "link": "producto02.html",
-        "favorito": 0
-      },
-      {
-        "id": 12,
-        "nombre": "Arreglo de 3 girasoles, statice, Baileys y chocolatina Lindt",
-        "descripcion": "",
-        "precio": 201990,
-        "stock": 50,
-        "img": "img/0012.jpg",
-        "destacado": 0,
-        "categoria": "Anchetas",
-        "link": "producto02.html",
-        "favorito": 0
-      }
-    ]
-    // filter para traer sólo los productos destacados (genera un nuevo arreglo)
-    let productosDestacados = productos.filter(prod => prod.destacado == 1);
-    // manipular en la web con this. Porque va aser una función de esta clase en particular: gestionarProductos
-    //this.cargaProductos(productosDestacados);
-    this.cargaProductos(productos);
+    //hacemos fetch a la url (ruta en main.js)
+    fetch(url)
+    .then(respuesta => respuesta.json())
+    .then(resultado => {
+      productos = resultado.productos;
+      // filter para traer sólo los productos destacados (genera un nuevo arreglo)
+      let productosDestacados = productos.filter(prod => prod.destacado == 1);
+      // manipular en la web con this. Porque va aser una función de esta clase en particular: gestionarProductos
+      //this.cargaProductos(productosDestacados);
+      this.cargaProductos(productosDestacados);
+      
+    })
     //llamar funciones
     this.mostrarCarrito();
     this.actualizarContador();
   }
 
+  
+   
+  
 
   //método cargar productos. Recibe una colección de productos
   cargaProductos(productos) {
@@ -209,20 +72,16 @@ class GestionarProductos {
     }
   }
 
-
   // Buscar productos
   buscar(q) {
     let resultado = productos.filter(producto => producto.nombre.toLowerCase().includes(q.toLowerCase()) || producto.descripcion.toLowerCase().includes(q.toLowerCase()));
     this.cargaProductos(resultado);
   }
 
-
-
   // función que agrega el producto al carrito después de dal clic en agrega el producto (icono carrito de cada producto)
   addCart(infoProducto) {
     // true o false
     const existe = carrito.some(producto => producto.id === infoProducto.id);
-
 
     if (existe) {
       const articulos = carrito.map(producto => {
@@ -270,8 +129,6 @@ class GestionarProductos {
     this.actualizarCarrito();
   }
 
-
-
   // se actualiza el carrito cada vez que se agrega un producto
   actualizarCarrito() {
     // actualiza el contador que arranca en 0
@@ -282,8 +139,6 @@ class GestionarProductos {
     this.guardarCarrito();
   }
 
-
-
   actualizarContador() {
     let totalProductos = this.contarProductos();
     // el id a cambiar
@@ -292,8 +147,6 @@ class GestionarProductos {
     let countCarrito2 = document.querySelector("#cuentaProductos2");
     countCarrito2.innerHTML = parseInt(totalProductos);
   }
-
-
 
   // conteo productos
   contarProductos() {
@@ -307,8 +160,6 @@ class GestionarProductos {
     return contadorProductos;
   }
   
-
-
   // Se quitan los productos del carrito
   eliminarArticulo(id) {
 
@@ -346,7 +197,6 @@ class GestionarProductos {
     localStorage.setItem('carrito', JSON.stringify(carrito));
   }
 
-
   //crea una función genérica para mostrar mensaje (refresca y muestra)
   mostrarHeader(msj) {
     //detectar el id
@@ -372,7 +222,7 @@ class GestionarProductos {
                             <img src="${producto.img}" width="80"/>
                         </div>
 
-                        <div class="col-4 d-flex align-items-center p-2 border-bottom">
+                        <div class="col-3 d-flex align-items-center p-2 border-bottom">
                             ${producto.nombre}
                         </div>
 
@@ -380,7 +230,7 @@ class GestionarProductos {
                             $ ${producto.precio}
                         </div>
 
-                        <div class="col-1 d-flex align-items-center justify-content-end p-2 border-bottom">
+                        <div class="col-2 d-flex align-items-center justify-content-end p-2 border-bottom">
                             ${producto.cantidad}
                         </div>
 
@@ -405,7 +255,10 @@ class GestionarProductos {
                       <div class="col-8 d-flex align-items-center justify-content-end p-2 border-bottom">
                           <b> $ ${total}</b>
                       </div>
-
+                      <div class="col-12 d-flex align-items-center justify-content-center p-4 border-bottom">
+                          <a class="btn btn-primary" href="#" id="compra"> Finalizar compra </a>
+                      </div>
+                      
                     `;
 
     // html en el carrito
