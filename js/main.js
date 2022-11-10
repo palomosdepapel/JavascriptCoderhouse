@@ -60,8 +60,8 @@ gestor.addCart(producto)
 function eliminar(id){
 // pasamos el producto que queremos eliminar
   gestor.eliminarArticulo(id);
-
 }
+
 
 // Eventos de tecla para buscador
 document.querySelector('#buscar').addEventListener('keyup', () => {

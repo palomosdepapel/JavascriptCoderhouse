@@ -18,11 +18,7 @@ class GestionarProductos {
     //llamar funciones
     this.mostrarCarrito();
     this.actualizarContador();
-  }
-
-  
-   
-  
+  }  
 
   //método cargar productos. Recibe una colección de productos
   cargaProductos(productos) {
@@ -165,7 +161,7 @@ class GestionarProductos {
   eliminarArticulo(id) {
 
     Swal.fire({
-      title: '"Esta seguro de eliminar el producto ?"',
+      title: '"¿Esta seguro de eliminar el producto?"',
       showCancelButton: true,
       cancelButtonColor: '#F391A8',
       confirmButtonText: 'Si, eliminarlo',
@@ -182,16 +178,7 @@ class GestionarProductos {
       }
     })
 
-    /* let resp = confirm("Esta seguro de eliminar el producto ?");
-    if (resp)  {
-
-        carrito = carrito.filter( producto => producto.id != id);
-        this.actualizarCarrito();
-        alert("El articulo fue eliminado del carrito");
-    }   
-        */
   }
-
 
   // se guarda el contenido del carrito en local storage
   guardarCarrito() {
@@ -257,7 +244,7 @@ class GestionarProductos {
                           <b> $ ${total}</b>
                       </div>
                       <div class="col-12 d-flex align-items-center justify-content-center p-4 border-bottom">
-                          <a class="btn btn-primary" href="#" id="compra"> Finalizar compra </a>
+                          <a class="btn btn-primary" href="javascript:vaciar" id="compra"> Finalizar compra </a>
                       </div>
                       
                     `;
