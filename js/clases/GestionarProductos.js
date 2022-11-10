@@ -153,13 +153,12 @@ class GestionarProductos {
     carrito.forEach((producto) => {
       contadorProductos = contadorProductos + parseInt(producto.cantidad);
     })
-    // una vez que recorre, devuelve la estru
+    // una vez que recorre, devuelve la estrura del producto
     return contadorProductos;
   }
   
   // Se quitan los productos del carrito
   eliminarArticulo(id) {
-
     Swal.fire({
       title: '"¿Esta seguro de eliminar el producto?"',
       showCancelButton: true,
@@ -168,17 +167,27 @@ class GestionarProductos {
       confirmButtonColor: '#6FE5CF',
       cancelButtonText: `Cancelar`,
     }).then((result) => {
-
       if (result.isConfirmed) {
         carrito = carrito.filter(articulo => articulo.id != id);
         this.actualizarCarrito();
-
         this.mostrar_notificacion("el articulo fue eliminado del carrito", 2000, "top", "center", "");
-
       }
     })
-
   }
+  // Al comprar, se vacía el carrito
+  hacerPedido(id) {
+    Swal.fire({
+      title: '"¡Pedido realizado!"',
+      confirmButtonColor: '#6FE5CF',
+      icon: 'success',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        carrito = [];
+        this.actualizarCarrito();
+      }
+    })
+  }
+
 
   // se guarda el contenido del carrito en local storage
   guardarCarrito() {
@@ -198,10 +207,11 @@ class GestionarProductos {
   mostrarCarrito() {
     let detalleCarrito = document.querySelector("#idCarrito");
     detalleCarrito.innerHTML = "";
-
+    
     let total = 0;
     carrito.forEach((producto) => {
       const row = document.createElement("div");
+      
       row.classList.add("row");
       total = total + (producto.precio * parseInt(producto.cantidad));
       row.innerHTML = `
@@ -244,14 +254,19 @@ class GestionarProductos {
                           <b> $ ${total}</b>
                       </div>
                       <div class="col-12 d-flex align-items-center justify-content-center p-4 border-bottom">
-                          <a class="btn btn-primary" href="javascript:vaciar" id="compra"> Finalizar compra </a>
+                          <a class="btn btn-primary" href="javascript:comprar()" id="compra"> Finalizar compra </a>
                       </div>
                       
                     `;
-
+    
     // html en el carrito
     detalleCarrito.appendChild(row);
-    
+    // si el carrito está vacío, entonces el boton finalizar se oculta
+    if (carrito.length === 0) {
+      document.getElementById("compra").style.display = "none";
+    } else {
+      document.getElementById("compra").style.display = "block";
+    };
   }
 
   mostrar_notificacion(texto, duracion, gravedad, posicion, estilo) {

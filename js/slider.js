@@ -59,7 +59,7 @@ var swiper3 = new Swiper(".mySwiper3", {
       spaceBetween: 20,
     },
     "@1.00": {
-      slidesPerView: 4,
+      slidesPerView: 3,
       spaceBetween: 40,
     },
     "@1.50": {

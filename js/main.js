@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded',() => {
   // Un OR para que valide si el estado local storage no existe, entonces quede vacío el arreglo 
   // OPERADOR AVANZADO
   carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
   // inicializar gestor para darle vida a la clase gestor
   gestor = new GestionarProductos();
   // llamando iniciar para buscar la info y la plasma en la web
@@ -61,6 +62,10 @@ function eliminar(id){
 // pasamos el producto que queremos eliminar
   gestor.eliminarArticulo(id);
 }
+// Función que finaliza el proceso de compra
+function comprar(id){
+    gestor.hacerPedido(id);
+  }
 
 
 // Eventos de tecla para buscador
@@ -75,5 +80,5 @@ document.querySelector('.buscar').addEventListener('keyup', () => {
       gestor.mostrarHeader('Todos los productos en stock');
       gestor.cargaProductos( productos );
   } 
-
 })
+
