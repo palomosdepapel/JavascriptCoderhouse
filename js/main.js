@@ -64,8 +64,8 @@ function eliminar(id){
 
 
 // Eventos de tecla para buscador
-document.querySelector('#buscar').addEventListener('keyup', () => {
-  let q = document.querySelector('#buscar').value;
+document.querySelector('.buscar').addEventListener('keyup', () => {
+  let q = document.querySelector('.buscar').value;
   //Empezamos a buscar solo cuadno hay se hayan tipeado mas 2 letras o mas
   if( q.length >= 2 ) { 
       gestor.mostrarHeader(`Resultados para: ${q}`);
