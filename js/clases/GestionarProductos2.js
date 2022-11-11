@@ -8,7 +8,7 @@ class GestionarProductos {
     .then(resultado => {
       productos = resultado.productos;
       // filter para traer sólo los productos destacados (genera un nuevo arreglo)
-      let productosDestacados = productos.filter(prod => prod.destacado == 1);
+      let productosDestacados = productos.filter(prod => prod.destacado == 0);
       // manipular en la web con this. Porque va aser una función de esta clase en particular: gestionarProductos
       //this.cargaProductos(productosDestacados);
       this.cargaProductos(productosDestacados);
@@ -47,7 +47,7 @@ class GestionarProductos {
         // crear caja 
         let prod = document.createElement('div');
         // agrega cada caja con una clase específica
-        prod.classList.add('swiper-slide');
+        prod.classList.add('col-md-4','col-sm-6','p-3');
         // agrega el ID para identificar fácilmente
         prod.setAttribute('id', 'row_' + producto.id);
         // generar contenido (Solo la para productos destacados) de la caja con su id, nombre, ruta de imagen, enlace url 

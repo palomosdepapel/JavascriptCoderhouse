@@ -79,6 +79,7 @@ document.querySelector('.buscar').addEventListener('keyup', () => {
       //Muestro todo sino hay nada el buscador   
       gestor.mostrarHeader('Todos los productos en stock');
       gestor.cargaProductos( productos );
+      gestor.modalProductos( productos );
   } 
 })
 
